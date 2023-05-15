@@ -7,8 +7,6 @@ import { Notify } from "notiflix";
 const searchParam = new URLSearchParams(location.search);
 const albumId = searchParam.get("album-id");
 
-setToLoacalStorage("albumId", albumId);
-
 async function getPhotos() {
   try {
     const photosData = await getData(`photos?albumId=${albumId}`);

@@ -39,11 +39,6 @@
   outline: none;
 }
 
-.btn__forward,
 .btn__back {
   margin-bottom: 15px;
-}
-
-.hidden {
-  display: none;
 }

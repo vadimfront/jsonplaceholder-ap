@@ -1,13 +1,8 @@
 import { Notify } from "notiflix";
 import { getData } from "../api";
 import { userIdMarkup, createAlbumList } from "../markup";
-import { btnForward, jsUserTableEl, jsalbumEl } from "../refs";
-import {
-  addMarkup,
-  getFromLocalStorage,
-  goForward,
-  setToLoacalStorage,
-} from "../utils";
+import { jsUserTableEl, jsalbumEl } from "../refs";
+import { addMarkup, goForward } from "../utils";
 
 const searchParams = new URLSearchParams(location.search);
 const userId = searchParams.get("user-id");
@@ -32,11 +27,6 @@ async function getAlbums() {
   }
 }
 
-function toggleBtnVisibility() {
-  const isAlbumId = getFromLocalStorage("albumId");
-  if (isAlbumId.length) btnForward.classList.remove("hidden");
-}
-
 function onClick(e) {
   const liAlbum = e.target.closest(".js-list-user-album");
   if (liAlbum.nodeName !== "LI") {
@@ -51,9 +41,7 @@ function onClick(e) {
 function onWindowLoad() {
   getUser();
   getAlbums();
-  toggleBtnVisibility();
 }
 
 jsalbumEl.addEventListener("click", onClick);
-btnForward.addEventListener("click", goForward);
 window.addEventListener("load", onWindowLoad);

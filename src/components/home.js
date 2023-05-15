@@ -23,10 +23,5 @@ const getUserId = (e) => {
   location.href = `user.html?user-id=${userId}`;
 };
 
-function onWindowLoad() {
-  init();
-  removeFromLoacalStorage("albumId");
-}
-
-window.addEventListener("load", onWindowLoad);
+window.addEventListener("load", init);
 jsTbodyEl.addEventListener("click", getUserId);
