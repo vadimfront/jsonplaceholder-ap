@@ -2,7 +2,7 @@ import Notiflix from "notiflix";
 import { getData } from "../api";
 import { makeFirstTableMarkup } from "../markup";
 import { jsTbodyEl } from "../refs";
-import { addMarkup } from "../utils";
+import { addMarkup, removeFromLoacalStorage } from "../utils";
 
 async function init() {
   try {
@@ -23,5 +23,10 @@ const getUserId = (e) => {
   location.href = `user.html?user-id=${userId}`;
 };
 
-window.addEventListener("load", init);
+function onWindowLoad() {
+  init();
+  removeFromLoacalStorage("albumId");
+}
+
+window.addEventListener("load", onWindowLoad);
 jsTbodyEl.addEventListener("click", getUserId);
